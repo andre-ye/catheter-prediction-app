@@ -18,23 +18,46 @@ Our solution is to use artificial intelligence to solve this problem. AI is much
 (Editors: visit [here](https://ecotrust-canada.github.io/markdown-toc/) to generate a table of contents for markdown code.)
 Helpful links to jump to a particular section.
 - [Approach](#approach)
-  * [Modelling Data](#modelling-data)
-  * [Deployment](#deployment)
-- [Process](#process)
+  * [Modeling Data with Deep Learning](#modeling-data-with-deep-learning)
+    + [Model](#model)
+    + [Preprocessing and Augmentation of Data](#preprocessing-and-augmentation-of-data)
+    + [Training Strategies](#training-strategies)
+    + [Technologies and Hardware](#technologies-and-hardware)
+  * [Deployment to Website](#deployment-to-website)
 - [Understanding the Data](#understanding-the-data)
   * [Different Types of Catheters](#different-types-of-catheters)
-
+- [The Story](#the-story)
+  * [Inspiration](#inspiration)
+  * [Challenges](#challenges)
+  * [What We Learned](#what-we-learned)
+  * [Next Steps for Catheter Recognition AI](#next-steps-for-catheter-recognition-ai)
+ 
 ---
 
 ## Approach
-### Modelling Data
+
+### Modeling Data with Deep Learning
+#### Model
+- Efficientnet with global pooling, insert diagram
+
 We used Neural Networks to approach the probelm, specifically, a Convolutional Neural Network (CNN). We used transfer learning on EffcientNetB6 with preloaded imagenet weights. The images were croped to 512x512 size, it's preprocessed with Rotation, Shear, Zoom and Shift augmentations. We trained our model with the Adam optimizer with 2 epochs of warm up learning rate, then it exponentially decreases for 13 more epochs. We used Tensor Processing Units(TPU) to accelerate the training process, taking about 4~ hours. We ensured the accuracy of our model on test data by using K fold cross validation strategy, 5 fold MultilabelStratified K fold was implemented. The model was coded in python using the tensroflow/keras framework.
 
-### Deployment
-  
----
+#### Preprocessing and Augmentation of Data
+- Rotations
+- tensorflow datasets (can insert some code snippets)
+```python
+def sample_code():
+ like_maybe_the_loading_function()
+```
 
-## Process
+#### Training Strategies
+- Discuss five-fold
+
+#### Technologies and Hardware
+- TPU
+
+### Deployment to Website
+= TensorFlow
 
 ---
 
@@ -49,6 +72,16 @@ There are 4 major types of catheters that are placed in patients to assist with 
 | Central Venous Catheter (CVC) | The CVC is placed through a large vein, needed in patients are more generally more ill. Can be used to give medicine. |
 | Swan-Ganz Catheter | This is used for a process called the right heart catheterization. It is mainly used to detect heart failures, monitor therapy, and evaluate the effect of certain drugs. |
 
----  
+---
 
+## The Story
+### Inspiration
+### Challenges
+### What We Learned
+### Next Steps for Catheter Recognition AI
+
+---
+
+
+[Back to top](#)
 
