@@ -27,5 +27,11 @@ There are 4 major types of catheters that are placed in patients to assist with 
 - Swan-Ganz catheter
   - This is used for a process called the right heart catheterization, it's mainly used to detect heart failures, monitor therapy and evaluate the effect of certain drugs.
 
+## Solution
+### Approach: 
+  We used Neural Networks to approach the probelm, specifically, a Convolutional Neural Network (CNN). We used transfer learning on EffcientNetB6 with preloaded imagenet weights. The images were croped to 512x512 size, it's preprocessed with Rotation, Shear, Zoom and Shift augmentations. We trained our model with the Adam optimizer with 2 epochs of warm up learning rate, then it exponentially decreases for 13 more epochs. We used Tensor Processing Units(TPU) to accelerate the training process, taking about 4~ hours. We ensured the accuracy of our model on test data by using K fold cross validation strategy, 5 fold MultilabelStratified K fold was implemented. The model was coded in python using the tensroflow/keras framework.
+  
+
+
 ## Process
 
