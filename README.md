@@ -13,7 +13,7 @@ Build description off this
 https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/data
 
 ## Understanding the Data
-#### Different Types of Catheters
+### Different Types of Catheters
 There are 4 major types of catheters that are placed in patients to assist with breathing and our model can simultaneously detect abnormalities in all 4 categories if present in one single X-ray image.
 
 - Endotracheal Tube (ETT)
