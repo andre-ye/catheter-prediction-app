@@ -16,15 +16,15 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
 # What do the file directories mean?
 <pre>
 <strong>main /</strong>
-   <strong>deployment /</strong>     #code for deploying the model
-      <strong>app.py</strong>     #the flask application for our website.
-      <strong>app_demo_site.py</strong>     #the modified flask application for the demo site (https://catheterdetection.pythonanywhere.com); since the host cannot hold our model, the code was modified with dummy data to provide a UI experience nonetheless.
-      <strong>templates /</strong>     # a folder for html and css designs for pages
-         <strong>index.html</strong>     #the home page
-         <strong>prediction.html</strong>     #the prediction page
-   <strong>model /</strong>     #code for building and testing the model
-      <strong>ranzcr-clip-efficientnet-initial.ipynb</strong>     # this was our initial baseline model; diff. model structure and rudimentary augmentation.
-      <strong>ranzcr-clip-efficientnet-final.ipynb</strong>     # this is our final model solution; five-folds, more advanced structure, and sophisticated augmentationl.
+   <strong>deployment /</strong>                                  #code for deploying the model
+      <strong>app.py</strong>                                     #the flask application for our website.
+      <strong>app_demo_site.py</strong>                           #the modified flask application for the demo site (https://catheterdetection.pythonanywhere.com); since the host cannot hold our model, the code was modified with dummy data to provide a UI experience nonetheless.
+      <strong>templates /</strong>                                #a folder for html and css designs for pages
+         <strong>index.html</strong>                              #the home page
+         <strong>prediction.html</strong>                         #the prediction page
+   <strong>model /</strong>                                       #code for building and testing the model
+      <strong>ranzcr-clip-efficientnet-initial.ipynb</strong>     #this was our initial baseline model; diff. model structure and rudimentary augmentation.
+      <strong>ranzcr-clip-efficientnet-final.ipynb</strong>       #this is our final model solution; five-folds, more advanced structure, and sophisticated augmentationl.
 </pre>
 
 
