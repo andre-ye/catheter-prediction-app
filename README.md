@@ -83,6 +83,5 @@ There are 4 major types of catheters that are placed in patients to assist with 
 
 ---
 
-
 [Back to top](#)
 
