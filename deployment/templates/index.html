@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AI Catheter Detector</title>
+
+    <style>
+
+        body {
+          background-image: url('https://raw.githubusercontent.com/andre-ye/catheter-prediction-app/main/background_img.png');
+          background-size: cover;
+        }
+
+        .content {
+          max-width: 600px;
+          margin: auto;
+        }
+
+        h1 {
+          color: white;
+          font-family: "Trebuchet MS";
+          font-size: 300%;
+        }
+
+        h2 {
+          color: white;
+          font-family: "Trebuchet MS";
+          font-size: 200%;
+        }
+
+
+        h3 {
+          color: white;
+          font-family: "Trebuchet MS";
+          font-size: 300%;
+        }
+
+        p {
+          color: white;
+          font-family: "Trebuchet MS";
+          font-size: 100%;
+        }
+
+        input[type='file']{
+          color:white;
+          font-size:15px;
+        }
+
+        input[type=button], input[type=submit], input[type=reset] {
+          background-color: #ffffff;
+          border: none;
+          color: #1a1a1a;
+          padding: 8px 20px;
+          text-decoration: none;
+          margin: 3px 1.5px;
+          cursor: pointer;
+        }
+
+    </style>
+
+    <!--<link rel="stylesheet" href="styles.css">-->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<div class="content">
+
+
+
+<body>
+    <h1>AI Catheter Detector 🤖</h1>
+
+    <p>
+        <strong>Catheters and endotracheal tubes</strong> are inserted into patient's lungs to help them breathe. They are connected to respirators that deliver oxygen to the lungs.
+
+        If tubes are improperly positioned, the effects are serious. It can cause injury to the throat, collapse the lung, and death.
+    </p>
+
+    <p>
+        <strong>Detecting if tubes are properly placed or not is a difficult task.</strong> An experienced doctor must analyze chest X-rays carefully, and their judgement takes time and may be inaccurate. With COVID-19, there is massive demand for tubes and strained medical support, which makes monitoring correct placement even more difficult.
+    </p>
+
+    <p>
+        We created a <strong>deep learning AI</strong> to automatically recognize if a tube is properly placed. This allows for accurate and quick results, potentially saving lives.
+    </p>
+
+    <hr/>
+
+    <h2>Run Predictions on an X-Ray</h2>
+
+    <p>
+        Upload a <code>.png</code> or <code>.jpg</code> image of an x-ray. This is a <strong>demo</strong>, our model is too large to host on <code>pythonanywhere.com</code> - this site is simply to provide a UI experience.
+    </p>
+
+    <form method="POST" action="" enctype="multipart/form-data">
+      <p><input type="file" name="file"></p>
+      <p><input type="submit" value="Run predictions on X-ray image"></p>
+    </form>
+
+
+    <hr/>
+    <p>
+        For more information on the process, visit our Github <code>README</code> <a href="https://github.com/andre-ye/catheter-prediction-app/blob/main/README.md" style="color:#bfbfbf" target="_blank" rel="noopener noreferrer">here</a>.
+    </p>
+
+    <p>
+        Our code is available <a href="https://github.com/andre-ye/catheter-prediction-app" style="color:#bfbfbf" target="_blank" rel="noopener noreferrer">here</a>.
+    </p>
+
+</body>
+
+
+
+</div>
+</html>
