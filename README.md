@@ -12,5 +12,20 @@ Our solution is to use artificial intelligence to solve this problem. AI is much
 Build description off this
 https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/data
 
+## Understanding the Data
+#### Different Types of Catheters
+There are 4 major types of catheters that are placed in patients to assist with breathing and our model can simultaneously detect abnormalities in all 4 categories if present in one single X-ray image.
+
+- Endotracheal Tube (ETT)
+  - The ETT tube is placed through the mouth, the tube is then connected to ventilator that delivers oxygen to the patient.
+- Nasogastric Tube (NGT)
+  - The NGT tube is placed through the nose down to the stomach. 
+  - A syringe is usually connected at the other end to extract the needed content
+- Central venous catheter (CVC)
+  - This is a catheters that's placed through a large vein, this is needed in patients are more generally more ill.
+  can be used to give medicine.
+- Swan-Ganz catheter
+  - This is used for a process called the right heart catheterization, it's mainly used to detect heart failures, monitor therapy and evaluate the effect of certain drugs.
+
 ## Process
 
