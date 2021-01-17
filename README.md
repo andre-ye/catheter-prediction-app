@@ -16,6 +16,7 @@ Our solution is to use artificial intelligence to solve this problem. AI is much
 
 # Navigate
 (Editors: visit [here](https://ecotrust-canada.github.io/markdown-toc/) to generate a table of contents for markdown code.)
+
 Helpful links to jump to a particular section.
 - [Approach](#approach)
   * [Modeling Data with Deep Learning](#modeling-data-with-deep-learning)
@@ -24,7 +25,7 @@ Helpful links to jump to a particular section.
     + [Training Strategies](#training-strategies)
     + [Technologies and Hardware](#technologies-and-hardware)
   * [Deployment to Website](#deployment-to-website)
-- [Understanding the Data](#understanding-the-data)
+- [Understanding the Data and Medical Context](#understanding-the-data-and-medical-context)
   * [Different Types of Catheters](#different-types-of-catheters)
 - [The Story](#the-story)
   * [Inspiration](#inspiration)
@@ -61,7 +62,7 @@ def sample_code():
 
 ---
 
-# Understanding the Data
+# Understanding the Data and Medical Context
 ## Different Types of Catheters
 There are 4 major types of catheters that are placed in patients to assist with breathing and our model can simultaneously detect abnormalities in all 4 categories if present in one single X-ray image.
 
