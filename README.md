@@ -78,6 +78,7 @@ There are 4 major types of catheters that are placed in patients to assist with 
 # The Story
 ## Inspiration
 ## Challenges
+Model too large to host, etc.
 ## What We Learned
 ## Next Steps for Catheter Recognition AI
 
