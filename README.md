@@ -15,11 +15,11 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
 
 # What do the file directories mean?
 ```
-main /
+**main** /
    deployment / #code for deploying the model
       app.py #the flask application for our website.
       app_demo_site.py #the modified flask application for the demo site (https://catheterdetection.pythonanywhere.com); since the host cannot hold our model, the code was modified with dummy data to provide a UI experience nonetheless.
-      templates / # afolder for html and css designs for pages
+      templates / # a folder for html and css designs for pages
          index.html #the home page
          prediction.html #the prediction page
    model / #code for building and testing the model
