@@ -6,7 +6,7 @@ Our solution is to use artificial intelligence to solve this problem. AI is much
 
 ---
 
-## Quick Links
+# Quick Links
 - **[Online Demo](https://catheterdetection.pythonanywhere.com/)**. Because our model is too big to upload to `pythonanywhere.com` - the website host - we unfortunately can't offer online predictions. However, you can experience the UI and get some dummy results. 🙂
 - [Hello]().
 
@@ -14,7 +14,7 @@ Our solution is to use artificial intelligence to solve this problem. AI is much
 
 ---
 
-## Navigate
+# Navigate
 (Editors: visit [here](https://ecotrust-canada.github.io/markdown-toc/) to generate a table of contents for markdown code.)
 Helpful links to jump to a particular section.
 - [Approach](#approach)
@@ -34,15 +34,15 @@ Helpful links to jump to a particular section.
  
 ---
 
-## Approach
+# Approach
 
-### Modeling Data with Deep Learning
-#### Model
+## Modeling Data with Deep Learning
+### Model
 - Efficientnet with global pooling, insert diagram
 
 We used Neural Networks to approach the probelm, specifically, a Convolutional Neural Network (CNN). We used transfer learning on EffcientNetB6 with preloaded imagenet weights. The images were croped to 512x512 size, it's preprocessed with Rotation, Shear, Zoom and Shift augmentations. We trained our model with the Adam optimizer with 2 epochs of warm up learning rate, then it exponentially decreases for 13 more epochs. We used Tensor Processing Units(TPU) to accelerate the training process, taking about 4~ hours. We ensured the accuracy of our model on test data by using K fold cross validation strategy, 5 fold MultilabelStratified K fold was implemented. The model was coded in python using the tensroflow/keras framework.
 
-#### Preprocessing and Augmentation of Data
+### Preprocessing and Augmentation of Data
 - Rotations
 - tensorflow datasets (can insert some code snippets)
 ```python
@@ -50,19 +50,19 @@ def sample_code():
  like_maybe_the_loading_function()
 ```
 
-#### Training Strategies
+### Training Strategies
 - Discuss five-fold
 
-#### Technologies and Hardware
+### Technologies and Hardware
 - TPU
 
-### Deployment to Website
+## Deployment to Website
 = TensorFlow
 
 ---
 
-## Understanding the Data
-### Different Types of Catheters
+# Understanding the Data
+## Different Types of Catheters
 There are 4 major types of catheters that are placed in patients to assist with breathing and our model can simultaneously detect abnormalities in all 4 categories if present in one single X-ray image.
 
 | Type | Description |
@@ -74,11 +74,11 @@ There are 4 major types of catheters that are placed in patients to assist with 
 
 ---
 
-## The Story
-### Inspiration
-### Challenges
-### What We Learned
-### Next Steps for Catheter Recognition AI
+# The Story
+## Inspiration
+## Challenges
+## What We Learned
+## Next Steps for Catheter Recognition AI
 
 ---
 
