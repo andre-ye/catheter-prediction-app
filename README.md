@@ -14,7 +14,7 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
 ---
 
 # What do the file directories mean?
-```
+<pre>
 **main** /
    deployment / #code for deploying the model
       app.py #the flask application for our website.
@@ -25,7 +25,7 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
    model / #code for building and testing the model
       ranzcr-clip-efficientnet-initial.ipynb # this was our initial baseline model; diff. model structure and rudimentary augmentation.
       ranzcr-clip-efficientnet-final.ipynb # this is our final model solution; five-folds, more advanced structure, and sophisticated augmentationl.
-```
+</pre>
 
 
 ---
