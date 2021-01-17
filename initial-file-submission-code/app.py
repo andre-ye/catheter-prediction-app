@@ -18,14 +18,14 @@ import tensorflow.keras.utils as U
 import tensorflow.keras.backend as K
 from tensorflow.keras.callbacks import Callback
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-import efficientnet.tfkeras as efn
+# import efficientnet.tfkeras as efn
 
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret"
 FILE_DIR = "static/media/photo.png"
 IMG_SIZES = (512, 512)
-base_model = efn.EfficientNetB5
+base_model = tf.keras.applications.EfficientNetB5
 
 
 def build_model(dim=331, base_model=base_model, n_labels=11, ):
