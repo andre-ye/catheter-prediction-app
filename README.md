@@ -99,8 +99,15 @@ This project was inspired by the works of Royal Australian and New Zealand Colle
 
 ## Challenges
 Model too large to host, etc.
-Having to deal with the large amount of data (12G~)
+Having to deal with the large amount of data (12G~).
 Hardware avaliabilities.
+Not enough time to complete under the 3 days time contraint.
+
+## How we built it
+
+(Basically a summary of the Approach section)
+
+We used the data provided by RANZCR, around 40k images. Using machine learning, we are able to predict images faster and more accurate than humans. We used the popular machine learning framework Tensorflow and built a Convolutional Neural Network(CNN), Specifically, we used the EffcientNetB5 structure. We spend time preproccessing the images, applying augmentations so our model will be more robust on unseen datasets. Some examples of the augmentations that we applied are zoom, shear and rotation. Being robust and being able to predict well on unseen images is crucially important, thus we trained 5 models on different parts of the datasets with overlaps (Kfold validation), ensuring the robustness. For each model we trained it for 5 iterations, obtaining result of around 98.5 accuracy (95.9 [ AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)). Finally, we built a website using the Flask framework for a UI system and the ability to recive user inputs. 
 
 ## What We Learned
 ## Next Steps for Catheter Recognition AI
