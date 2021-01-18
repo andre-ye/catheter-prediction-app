@@ -33,8 +33,6 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
 ---
 
 # Navigate
-(Editors: visit [here](https://ecotrust-canada.github.io/markdown-toc/) to generate a table of contents for markdown code.)
-
 Helpful links to jump to a particular section.
 - [Approach](#approach)
   * [Modeling Data with Deep Learning](#modeling-data-with-deep-learning)
@@ -60,8 +58,7 @@ Helpful links to jump to a particular section.
 - Transfer learning on an EfficientNetB6 model with preloaded ImageNet weights, then fine-tuned on dataset. 
 - Images are cropped to a `512x512` size.
 - Adam optimizer used; 2 epochs of warm-up learning rate and exponential decay for 13 epochs.
-
-We used Neural Networks to approach the probelm, specifically, a Convolutional Neural Network (CNN). We used transfer learning on EffcientNetB6 with preloaded imagenet weights. The images were croped to 512x512 size, it's preprocessed with Rotation, Shear, Zoom and Shift augmentations. We trained our model with the Adam optimizer with 2 epochs of warm up learning rate, then it exponentially decreases for 13 more epochs. We used Tensor Processing Units(TPU) to accelerate the training process, taking about 4~ hours. We ensured the accuracy of our model on test data by using K fold cross validation strategy, 5 fold MultilabelStratified K fold was implemented. The model was coded in python using the tensroflow/keras framework.
+- Used `MultilabelStratified` 5-fold cross validation strategy. (Five identically-structured models were trained on 80% of the data each; final result is a weighted average of the predictions of each model.)
 
 ### Preprocessing and Augmentation of Data
 - Dataset (`.jpg` and `.png` images) converted into a TensorFlow datasets format (`tf.dataset`) for quick deep learning processing.
@@ -84,14 +81,18 @@ rotation_matrix = get_3x3_mat([c1,   s1,   zero,
                              zero, zero, one])  
 ```
 
-### Training Strategies
-- Discuss five-fold
-
 ### Technologies and Hardware
-- TPU
+- Hardware: Nvidia Telsa P100 TPU v3-8 with 8 cores.
+- Language: Python 3.8, model developed in Jupyter Notebooks.
+- Linear algebra processing with NumPy.
+- Data labels and directories manipulated with Pandas.
+- Neural network developed in Keras/TensorFlow.
 
 ## Deployment to Website
-= TensorFlow
+- Deployed using Flask in Python.
+- Hosted by `pythonanywhere.com`.
+- Used HTML and CSS to create pages to display results.
+- Loaded Keras/TensorFlow neural network architecture and weights, and returned prediction for user-uploaded image of x-ray.
 
 ---
 
@@ -106,10 +107,33 @@ There are 4 major types of catheters that are placed in patients to assist with 
 | Central Venous Catheter (CVC) | The CVC is placed through a large vein, needed in patients are more generally more ill. Can be used to give medicine. |
 | Swan-Ganz Catheter | This is used for a process called the right heart catheterization. It is mainly used to detect heart failures, monitor therapy, and evaluate the effect of certain drugs. |
 
+## Image Data
+X-rays of the lung with any combination of ETTs, NGTs, CVCs, or Swan Gantz Catheters present.
+![](https://raw.githubusercontent.com/andre-ye/catheter-prediction-app/main/x-ray-images.png)
+
+## Targets
+This was a binary multilabel multiclass problem - there are multiple targets, each image can have multiple targets, and each target is either `0` or `1`.. Our model needed to predict 11 targets:
+
+| Target | Description |
+| --- | --- |
+| `ETT - Abnormal` | The ETT is present and abnormally placed. |
+| `ETT - Borderline` | The ETT is present and may be incorrectly placed. |
+| `ETT - Normal` | The ETT is present and normally placed. |
+| `NGT - Abnormal` | The NGT is present and abnormally placed. |
+| `NGT - Borderline` | The NGT is present and may be incorrectly placed. |
+| `NGT - Normal` | The NGT is present and normally placed. |
+| `NGT - Incorrectly Imaged` | The x-ray has been incorrectly imaged. |
+| `CVC - Abnormal` | The CVC is present and abnormally placed. |
+| `CVC - Borderline` | The CVC is present and may be incorrectly placed. |
+| `CVC - Normal` | The CVC is present and normally placed. |
+| `Swan Ganz Catheter Present` | The Swan Ganz Catheter is present. |
+
 ---
 
 # The Story
 ## Inspiration
+This project was inspired by data from the Royal Australian and New Zealand College of Radiologists (RANZCR), where radiographs are analyzed to correct the positioning of catheters in a patient's lungs. X-rays are easily taken, but the position of catheters can be difficult to assess. With COVID-19, respirators and catheters are in higher demand than ever, straining hospital resources and 
+
 This project was inspired by the works of Royal Australian and New Zealand College of Radiologists(RANZCR), where they anaylze radiographs to correct the position of Catheters. Xrays are easily taken but the position of Cateters placed are hard to reconize and detect errors, while radiologists can anaylze radiograph but there are not enough people that's qualified and resources are scarce. From the data that was [provided by RANZCR](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/data), we trained our model to automate the process of spotting errors in placement of Catheter tubes. This could possibly help the COVID crisis since Catheters are commonly used to assist with patient breathing. 
 
 ## Challenges
@@ -119,9 +143,6 @@ Hardware avaliabilities.
 Not enough time to complete under the 3 days time contraint.
 
 ## How we built it
-
-(Basically a summary of the Approach section)
-
 We used the data provided by RANZCR, around 40k images. Using machine learning, we are able to predict images faster and more accurate than humans. We used the popular machine learning framework Tensorflow and built a Convolutional Neural Network(CNN), Specifically, we used the EffcientNetB5 structure. We spend time preproccessing the images, applying augmentations so our model will be more robust on unseen datasets. Some examples of the augmentations that we applied are zoom, shear and rotation. Being robust and being able to predict well on unseen images is crucially important, thus we trained 5 models on different parts of the datasets with overlaps (Kfold validation), ensuring the robustness. For each model we trained it for 5 iterations, obtaining result of around 98.5 accuracy (95.9 [ AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)). Finally, we built a website using the Flask framework for a UI system and the ability to recive user inputs. 
 
 ## What We Learned
