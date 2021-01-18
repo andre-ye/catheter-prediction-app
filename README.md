@@ -129,8 +129,6 @@ There are 4 major types of catheters that are placed in patients to assist with 
 ## Image Data
 X-rays of the lung with any combination of ETTs, NGTs, CVCs, or Swan Gantz Catheters present.
 
-![](https://raw.githubusercontent.com/andre-ye/catheter-prediction-app/main/x-ray-images.png)
-
 ## Targets
 This was a binary multilabel multiclass problem - there are multiple targets, each image can have multiple targets, and each target is either `0` or `1`.. Our model needed to predict 11 targets:
 
