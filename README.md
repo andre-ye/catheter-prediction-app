@@ -34,15 +34,20 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
 
 # Navigate
 Helpful links to jump to a particular section.
+- [Catheter Prediction AI 🤖](#catheter-prediction-ai---)
+- [Quick Links](#quick-links)
+- [What do the file directories mean?](#what-do-the-file-directories-mean-)
+- [Navigate](#navigate)
 - [Approach](#approach)
   * [Modeling Data with Deep Learning](#modeling-data-with-deep-learning)
     + [Model](#model)
     + [Preprocessing and Augmentation of Data](#preprocessing-and-augmentation-of-data)
-    + [Training Strategies](#training-strategies)
     + [Technologies and Hardware](#technologies-and-hardware)
   * [Deployment to Website](#deployment-to-website)
 - [Understanding the Data and Medical Context](#understanding-the-data-and-medical-context)
   * [Different Types of Catheters](#different-types-of-catheters)
+  * [Image Data](#image-data)
+  * [Targets](#targets)
 - [The Story](#the-story)
   * [Inspiration](#inspiration)
   * [Challenges](#challenges)
