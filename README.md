@@ -8,8 +8,8 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
 ---
 
 # Quick Links
-- **[Online Demo](https://catheterdetection.pythonanywhere.com/)**. Because our model is too big to upload to `pythonanywhere.com` - the website host - we unfortunately can't offer online predictions. However, you can experience the UI and get some dummy results. 🙂
-- 
+- **[Online Demo](https://catheterdetection.pythonanywhere.com/)**. Because our model is too big to upload to `pythonanywhere.com` - the website host - we unfortunately can't offer online predictions. However, you can experience the UI and get some dummy results.
+- **[Video Demo of Actual Model](https://drive.google.com/file/d/1zAZ4V3sclqzgokvNzySCmyiazwHaNH3x/view)**. We hosted our website on a local server that could hold the model weights; here's a video demo of it giving real predictions on a real X-ray.
 
 ---
 
@@ -55,10 +55,11 @@ Helpful links to jump to a particular section.
 
 ## Modeling Data with Deep Learning
 ### Model
-- Transfer learning on an EfficientNetB6 model with preloaded ImageNet weights, then fine-tuned on dataset. 
+- Transfer learning on an EfficientNetB5 model with preloaded ImageNet weights, then fine-tuned on dataset. 
 - Images are cropped to a `512x512` size.
 - Adam optimizer used; 2 epochs of warm-up learning rate and exponential decay for 13 epochs.
 - Used `MultilabelStratified` 5-fold cross validation strategy. (Five identically-structured models were trained on 80% of the data each; final result is a weighted average of the predictions of each model.)
+- Performance: 98.5 accuracy and 95.9 [AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)) on test data, 97.1 [AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) for train data (with augmentation).
 
 ### Preprocessing and Augmentation of Data
 - Dataset (`.jpg` and `.png` images) converted into a TensorFlow datasets format (`tf.dataset`) for quick deep learning processing.
@@ -79,7 +80,19 @@ zero = tf.constant([0],dtype='float32')
 rotation_matrix = get_3x3_mat([c1,   s1,   zero, 
                              -s1,  c1,   zero, 
                              zero, zero, one])  
+                            
+# sample code for shear
+c2 = tf.math.cos(shear)
+s2 = tf.math.sin(shear)    
+
+shear_matrix = get_3x3_mat([one,  s2,   zero, 
+                          zero, c2,   zero, 
+                          zero, zero, one]) 
 ```
+
+Examples of augmented X-rays:
+
+![](https://raw.githubusercontent.com/andre-ye/catheter-prediction-app/main/x-ray-augmented.png)
 
 ### Technologies and Hardware
 - Hardware: Nvidia Telsa P100 TPU v3-8 with 8 cores.
@@ -109,6 +122,7 @@ There are 4 major types of catheters that are placed in patients to assist with 
 
 ## Image Data
 X-rays of the lung with any combination of ETTs, NGTs, CVCs, or Swan Gantz Catheters present.
+
 ![](https://raw.githubusercontent.com/andre-ye/catheter-prediction-app/main/x-ray-images.png)
 
 ## Targets
@@ -132,21 +146,26 @@ This was a binary multilabel multiclass problem - there are multiple targets, ea
 
 # The Story
 ## Inspiration
-This project was inspired by data from the Royal Australian and New Zealand College of Radiologists (RANZCR), where radiographs are analyzed to correct the positioning of catheters in a patient's lungs. X-rays are easily taken, but the position of catheters can be difficult to assess. With COVID-19, respirators and catheters are in higher demand than ever, straining hospital resources and 
-
-This project was inspired by the works of Royal Australian and New Zealand College of Radiologists(RANZCR), where they anaylze radiographs to correct the position of Catheters. Xrays are easily taken but the position of Cateters placed are hard to reconize and detect errors, while radiologists can anaylze radiograph but there are not enough people that's qualified and resources are scarce. From the data that was [provided by RANZCR](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/data), we trained our model to automate the process of spotting errors in placement of Catheter tubes. This could possibly help the COVID crisis since Catheters are commonly used to assist with patient breathing. 
+This project was inspired by data from the Royal Australian and New Zealand College of Radiologists (RANZCR), where radiographs are analyzed to correct the positioning of catheters in a patient's lungs. X-rays are easily taken, but the position of catheters can be difficult to assess. With COVID-19, respirators and catheters are in higher demand than ever, straining hospital resources. AI can help take the place of valuable doctors and radiologists during this time by providing more accurate and accessible judgements on catheter predictions. They're also more accessible to regions with less medical support. By freeing up medical personell and making catheters safer to use, we believe our model can help aid the COVID crisis.
 
 ## Challenges
-Model too large to host, etc.
-Having to deal with the large amount of data (12G~).
-Hardware avaliabilities.
-Not enough time to complete under the 3 days time contraint.
-
-## How we built it
-We used the data provided by RANZCR, around 40k images. Using machine learning, we are able to predict images faster and more accurate than humans. We used the popular machine learning framework Tensorflow and built a Convolutional Neural Network(CNN), Specifically, we used the EffcientNetB5 structure. We spend time preproccessing the images, applying augmentations so our model will be more robust on unseen datasets. Some examples of the augmentations that we applied are zoom, shear and rotation. Being robust and being able to predict well on unseen images is crucially important, thus we trained 5 models on different parts of the datasets with overlaps (Kfold validation), ensuring the robustness. For each model we trained it for 5 iterations, obtaining result of around 98.5 accuracy (95.9 [ AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)). Finally, we built a website using the Flask framework for a UI system and the ability to recive user inputs. 
+- **Model too large to host.** Just one of our five models is 300-400 MB large, and our online deployment service, `pythonanywhere.com`, can only host 100 MB for one directory. We ended up using our website (`https://catheterdetection.pythonanywhere.com/`) as a UI experiment with dummy code.
+- **Large dataset.** The dataset consists of over 40k images, meaning it is a large amount of data - about 12 GB. This means that we needed to convert it into a highly specialized from - TensorFlow datasets - and had to be careful about applying augmentations or other changes to the images. This also made our experimentation slower.
+- **Hardware availabilities.** We use Kaggle and Google Colab's TPU and GPU, which have time limits.
+- **Not enough time.** Deep learning models take a long time to train, so to find the true best model, we'd need a bit more time.
 
 ## What We Learned
+Some of our key learnings:
+- **How to deal with big datasets.** This dataset was particularly large, so we had to learn how to make smart decisions to maneuver around it.
+- **How to deploy a deep learning model w/ Flask.** This was our first time using Flask to deploy a model (prior we had experience with Django).
+- **How to manipulate hardware.** We had to configure our TPU and GPU for optimal training speed and experimentation w/ model structure.
+
 ## Next Steps for Catheter Recognition AI
+- Model deployment on live website, being able to predict online from user inputed images.
+- Further improving the model by adding complexity and augmentation.
+- Designing a more user friendly UI interface.
+- Training with annotated images.
+- Adding regularization by increasing the drop connect rate in model structure.
 
 ---
 
