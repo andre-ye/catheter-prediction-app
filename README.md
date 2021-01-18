@@ -9,7 +9,7 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
 
 # Quick Links
 - **[Online Demo](https://catheterdetection.pythonanywhere.com/)**. Because our model is too big to upload to `pythonanywhere.com` - the website host - we unfortunately can't offer online predictions. However, you can experience the UI and get some dummy results. 🙂
-- [Hello]().
+- 
 
 ---
 
@@ -57,16 +57,31 @@ Helpful links to jump to a particular section.
 
 ## Modeling Data with Deep Learning
 ### Model
-- Efficientnet with global pooling, insert diagram
+- Transfer learning on an EfficientNetB6 model with preloaded ImageNet weights, then fine-tuned on dataset. 
+- Images are cropped to a `512x512` size.
+- Adam optimizer used; 2 epochs of warm-up learning rate and exponential decay for 13 epochs.
 
 We used Neural Networks to approach the probelm, specifically, a Convolutional Neural Network (CNN). We used transfer learning on EffcientNetB6 with preloaded imagenet weights. The images were croped to 512x512 size, it's preprocessed with Rotation, Shear, Zoom and Shift augmentations. We trained our model with the Adam optimizer with 2 epochs of warm up learning rate, then it exponentially decreases for 13 more epochs. We used Tensor Processing Units(TPU) to accelerate the training process, taking about 4~ hours. We ensured the accuracy of our model on test data by using K fold cross validation strategy, 5 fold MultilabelStratified K fold was implemented. The model was coded in python using the tensroflow/keras framework.
 
 ### Preprocessing and Augmentation of Data
-- Rotations
-- tensorflow datasets (can insert some code snippets)
+- Dataset (`.jpg` and `.png` images) converted into a TensorFlow datasets format (`tf.dataset`) for quick deep learning processing.
+- Augmentations were implemented using TensorFlow matrix multiplication.
+   - 10-degree range random rotation left or right.
+   - Random shear within range of 5%.
+   - Random height-wise zoom within range of 5%.
+   - Random width-wise zoom within range of 5%.
+   - Random height-wise shift within range of 5%.
+   - Random width-wise shift within range of 5%.
 ```python
-def sample_code():
- like_maybe_the_loading_function()
+# our sample code for applying a rotation to an image using TensorFlow matrix multiplication.
+c1   = tf.math.cos(rotation)
+s1   = tf.math.sin(rotation)
+one  = tf.constant([1],dtype='float32')
+zero = tf.constant([0],dtype='float32')
+
+rotation_matrix = get_3x3_mat([c1,   s1,   zero, 
+                             -s1,  c1,   zero, 
+                             zero, zero, one])  
 ```
 
 ### Training Strategies
