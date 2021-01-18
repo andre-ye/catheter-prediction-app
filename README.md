@@ -98,10 +98,10 @@ shear_matrix = get_3x3_mat([one,  s2,   zero,
 
 Examples of augmented X-rays:
 
-![](https://raw.githubusercontent.com/andre-ye/catheter-prediction-app/main/x-ray-augmented.png)
+
 
 ### Technologies and Hardware
-- Hardware: Nvidia Telsa P100 TPU v3-8 with 8 cores.
+- Hardware: Nvidia Telsa P100 GPU, TPU v3-8 with 8 cores.
 - Language: Python 3.8, model developed in Jupyter Notebooks.
 - Linear algebra processing with NumPy.
 - Data labels and directories manipulated with Pandas.
