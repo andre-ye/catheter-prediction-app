@@ -95,8 +95,13 @@ There are 4 major types of catheters that are placed in patients to assist with 
 
 # The Story
 ## Inspiration
+This project was inspired by the works of Royal Australian and New Zealand College of Radiologists(RANZCR), where they anaylze radiographs to correct the position of Catheters. Xrays are easily taken but the position of Cateters placed are hard to reconize and detect errors, while radiologists can anaylze radiograph but there are not enough people that's qualified and resources are scarce. From the data that was [provided by RANZCR](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/data), we trained our model to automate the process of spotting errors in placement of Catheter tubes. This could possibly help the COVID crisis since Catheters are commonly used to assist with patient breathing. 
+
 ## Challenges
 Model too large to host, etc.
+Having to deal with the large amount of data (12G~)
+Hardware avaliabilities.
+
 ## What We Learned
 ## Next Steps for Catheter Recognition AI
 
