@@ -11,6 +11,7 @@ Catheters and tubes are inserted into the lungs to help patients breathe and/or 
 - **[Online Demo](https://catheterdetection.pythonanywhere.com/)**. Because our model is too big to upload to `pythonanywhere.com` - the website host - we unfortunately can't offer online predictions. However, you can experience the UI and get some dummy results.
 - **[Video Demo of Actual Model](https://drive.google.com/file/d/1zAZ4V3sclqzgokvNzySCmyiazwHaNH3x/view)**. We hosted our website on a local server that could hold the model weights; here's a video demo of it giving real predictions on a real X-ray.
 - **[Presentation Video](https://drive.google.com/file/d/1N2S1eCWgGqcF-_125v8dE7BSYQuR2dgA/view?usp=sharing)**. We present the problem of catheter inaccuracy, medical context, our solution, and a demonstration of a locally-hosted site returning live predictions on a real X-ray.
+- **[Presentation Slides](https://www.canva.com/design/DAETWuEon6E/-TqcxHOA_Es9nG6HAmh0Tg/view?utm_content=DAETWuEon6E&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)**. The slides on Canva for our presentation.
 
 ---
 
