@@ -1,4 +1,5 @@
 # Catheter Prediction AI 🤖
+# DO NOT REDISTRUBUTE OR USE THIS FOR ANY COMMERCIAL PURPOSES UNDER ANY CIRCUMSTANCES
 
 Catheters and tubes are inserted into the lungs to help patients breathe and/or deal with complications in lung surgeries. If they're improperly placed, they can cause throat injury, lung collapse, or even death. Furthermore, these tubes are connected with respirators and used to deal with COVID-19. However, diagnosing if a catheter is properly placed or not is a difficult tak. Experienced doctors must analyze X-rays, which often have multiple catheters in them, closely. Doctors can be inaccurate, and examining x-rays takes valuable time and resources from hospitals already strained by COVID-19.
 
